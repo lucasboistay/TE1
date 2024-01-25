@@ -1,5 +1,5 @@
-cmake-build-debug/
 .idea/
 /data/
 /obj/
 __pycache__/
+lib/eigen-3.4.0/
