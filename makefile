@@ -4,6 +4,10 @@ INCLUDES = -I./include -I./lib/eigen-3.4.0
 SRC= $(wildcard src/*.cpp)
 OBJ= $(SRC:.cpp=.o)
 RM = rm -f
+ZIPNAME = TP1.zip
+ZIPFILES = src/ include/ lib/ makefile README.md .gitignore affiche.py requirements.txt
+
+DATANAME = banane
 
 # Règle de compilation
 all: $(OBJ)
@@ -24,3 +28,9 @@ super_clean :
 
 clean_data :
 	$(RM) data/*.txt data/*.pdf
+
+zip :
+	zip -r $(ZIPNAME) $(ZIPFILES)
+
+plot :
+	python3 affiche.py data/$(DATANAME).txt
