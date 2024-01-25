@@ -10,6 +10,13 @@
 - `make clean` : clean the project
 - `make run` : run the project
 
+## Usage :
+
+````shell
+./a.out
+python3 ./affiche.py data/[nom_fichier].txt
+````
+
 ## Project structure :
 
 - `src/` : contains the source files
