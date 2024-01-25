@@ -9,7 +9,7 @@
 - `make` : compile the project
 - `make clean` : clean the project
 - `make run` : run the project
-- `make plot` : plot the data
+- `make plot` : plot the data (change the name of the file in the Makefile)
 - `make zip` : create a zip file of the project
 
 ## Usage :

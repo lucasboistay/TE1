@@ -7,7 +7,10 @@ RM = rm -f
 ZIPNAME = TP1.zip
 ZIPFILES = src/ include/ lib/ makefile README.md .gitignore affiche.py requirements.txt
 
-DATANAME = banane
+# -----------------------------------
+# To change the name of the data file
+DATANAME = banane  # <----------- HERE
+# -----------------------------------
 
 # Règle de compilation
 all: $(OBJ)
