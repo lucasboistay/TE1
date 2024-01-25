@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import sys 
 
 # Variable a modifier avant execution
-#nomfichier = "carre.txt"                     # <== fichier de donnees
-nomfichier = "logistique.txt"                     # <== fichier de donnees
+nomfichier = "carre.txt"                     # <== fichier de donnees
+#nomfichier = "logistique.txt"                     # <== fichier de donnees
 
 # ou bien indiquer le nom du fichier sur la ligne de commande
 if len(sys.argv) > 1:

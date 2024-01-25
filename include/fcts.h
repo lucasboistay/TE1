@@ -6,6 +6,6 @@
 #define TECOURS_FCTS_H
 
 float carre(float);
-float logistique(float);
+float logistique(float x);
 
 #endif //TECOURS_FCTS_H

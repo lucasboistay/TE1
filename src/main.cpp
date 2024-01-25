@@ -7,6 +7,8 @@
 #include "../include/fcts.h"
 #include "../include/util.h"
 
+extern float t0, yzero, a, k;
+
 using namespace std;
 
 int main() {
@@ -35,7 +37,13 @@ int main() {
     // Construction du vecteur Y
 
     Eigen::VectorXf Y(n);
-    tabule(carre, X, Y);
+
+    // Définitions des paramètres extérieurs à la fonction logistique
+    k = 1.;
+    yzero = 0.5;
+    a = 1.;
+    t0 = 0.;
+    tabule(logistique, X, Y);
 
     // Création du fichier
 
@@ -45,7 +53,7 @@ int main() {
     string filename;
     cin >> filename;
 
-    ecrit("C:\\Users\\Lucas\\CLionProjects\\TE1\\data\\" + filename + ".txt", X, Y);
+    ecrit("data/" + filename + ".txt", X, Y);
     cout << "Fichier " << filename << ".txt ecrit" << endl;
 
     return 0;
