@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <string>
 
+
 #include "../include/methods.h"
 #include "../include/fcts.h"
 #include "../include/util.h"
@@ -52,6 +53,9 @@ int main() {
     cout << "Entrer le nom du fichier" << endl;
     string filename;
     cin >> filename;
+
+    // si le dossier data n'existe pas, on le crée
+    system("mkdir -p data");
 
     ecrit("data/" + filename + ".txt", X, Y);
     cout << "Fichier " << filename << ".txt ecrit" << endl;
