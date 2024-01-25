@@ -2,7 +2,7 @@
 // Created by Lucas on 25/01/2024.
 //
 
-#include "methods.h"
+#include "../include/methods.h"
 
 using namespace std;
 

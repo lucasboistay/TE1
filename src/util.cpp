@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <Eigen/Dense>
 
-#include "util.h"
+#include "../include/util.h"
 
 using namespace std;
 

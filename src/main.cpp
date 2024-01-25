@@ -3,9 +3,9 @@
 #include <iomanip>
 #include <string>
 
-#include "methods.h"
-#include "fcts.h"
-#include "util.h"
+#include "../include/methods.h"
+#include "../include/fcts.h"
+#include "../include/util.h"
 
 using namespace std;
 

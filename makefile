@@ -10,7 +10,7 @@ a.out : $(OBJS)
 	$(CPPC) $(CFLAGS) $^ -o $@ 
 
 # Exemple de règle pour fcts.o
-fcts.o : fcts.cpp fcts.h
+fcts.o : src/fcts.cpp include/fcts.h
 	$(CPPC) -c $(CFLAGS) fcts.cpp
 # ou mieux avec $<, qui désigne la première dépendance
 #	$(CPPC) -c $(CFLAGS) $<
