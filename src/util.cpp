@@ -1,36 +1,37 @@
-//
-// Created by Lucas on 25/01/2024.
-//
-
-#include <fstream>
 #include <iostream>
+#include <fstream>
 #include <iomanip>
-#include <Eigen/Dense>
+#include <eigen3/Eigen/Dense>
 
-#include "../include/util.h"
+#include "util.h"
 
 using namespace std;
 
-void ecrit(const string &filename, const Eigen::VectorXf &x,const Eigen::VectorXf &y){
-    ofstream my_file;
-    my_file.open(filename, ios::out);
+float pas;
+int taille;
 
-    if (!my_file){ //test de la reussite
-        cerr << "Impossible d'ouvrir " << filename <<endl;
-        exit(EXIT_FAILURE);
-    }
+void ecrit(const std::string &filename, const Eigen::VectorXf &x, const Eigen::VectorXf &y){
 
-    my_file << setiosflags(ios::scientific) << setprecision(7);
+	ofstream my_file; //declaration d 'un objet output file stream
+	my_file.open(filename); //connexion du flux au fichier
+	
+	if (! my_file) { //test de la reussite
+		cerr << "Impossible d 'ouvrir " << filename << endl;
+		exit(EXIT_FAILURE);
+	}
+	
+	//definition du format de sortie
+	my_file << setiosflags(ios::scientific) << setprecision(7);
+	
+	//ecriture d'en tête
+	my_file << "#" << " " << "h min" << " " << x.minCoeff() << " " << " h max" << " " << x.maxCoeff() << endl;
+	my_file << "#" << " " << "delta min" << " " << y.minCoeff() << " " << " delta max" << " " << y.maxCoeff() << endl;
+	
+	
+	for (int i = 0; i < x.size(); i++) {
+		my_file << x(i) << " " << y(i) << endl;
+	}
+	my_file.close(); //fermeture de la connexion
 
-    // En tête du fichier
-
-    my_file << "# " << x(0) << " " << x(x.size()-1) << endl;
-    my_file << "# " << y.minCoeff() << " " << y.maxCoeff() << endl;
-    my_file << "# " << x.size() << " " << x(1) - x(0)  << endl;
-
-    for (int i = 0; i < x.size(); i++) {
-        my_file << x(i) << " " << y(i) << endl;
-    }
-
-    my_file.close();
 }
+

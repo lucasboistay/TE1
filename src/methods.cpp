@@ -1,13 +1,31 @@
-//
-// Created by Lucas on 25/01/2024.
-//
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <eigen3/Eigen/Dense>
 
-#include "../include/methods.h"
+#include <functional>
+#include "methode.h"
 
 using namespace std;
 
-void tabule(std::function<float(float)> f, const Eigen::VectorXf &x, Eigen::VectorXf &y){
-    for (int i = 0; i < x.size(); i++) {
-        y(i) = f(x(i));
-    }
+
+float deriv2tdd(std::function<float(float)> f, const float t_0, const float h){ //Arguments : la fonction à tester, l'abscisse ou on effectue la dérivée, le pas h
+
+	return (f(t_0 + h) - f(t_0)) / h ;
+	
+	
+}
+
+float derriv2tdg(std::function<float(float)> f, const float t_0, const float h){ //Arguments : la fonction à tester, l'abscisse ou on effectue la dérivée, le pas h
+
+	return (f(t_0) - f(t_0 - h)) / h ;
+	
+	
+}
+
+float deriv2tc(std::function<float(float)> f, const float t_0, const float h){ //Arguments : la fonction à tester, l'abscisse ou on effectue la dérivée, le pas h
+
+	return (f(t_0 + h) - f(t_0 - h)) / (2*h) ;
+	
+	
 }

@@ -1,11 +1,8 @@
-//
-// Created by Lucas on 25/01/2024.
-//
-
-#ifndef TECOURS_FCTS_H
-#define TECOURS_FCTS_H
-
-float carre(float);
-float logistique(float x);
-
-#endif //TECOURS_FCTS_H
+#ifndef FCTS_H
+#include <eigen3/Eigen/Dense>
+float sinus(float);
+float expo(float);
+float deriv_sinus(float);
+float deriv_expo(float);
+#define FCTS_H
+#endif

@@ -1,64 +1,92 @@
 #include <iostream>
-#include <Eigen/Dense>
+#include <fstream>
 #include <iomanip>
+#include <eigen3/Eigen/Dense>
+#include <cmath>
 #include <string>
+#include <functional>
 
+//en-têtes personnels
 
-#include "../include/methods.h"
-#include "../include/fcts.h"
-#include "../include/util.h"
-
-extern float t0, yzero, a, k;
+#include "fcts.h"
+#include "methode.h"
+#include "util.h"
 
 using namespace std;
 
-int main() {
+extern float k;
 
-    cout << setiosflags(ios::scientific) << setprecision(7);
-    cout << "Entrer l'abcisse de debut, de fin et le pas" << endl;
+int main(){
 
-    float x_debut, x_fin, dx;
 
-    cin >> x_debut >> x_fin >> dx;
+int n;
+float hmin;
+float hmax;
+float t_0 = M_PI / 4;
+int choix;
+int choixf;
+float f_0;
+string filename;
+k = 1.0;
 
-    // Construction du vecteur X
+cout << "Saisir les valeurs de 1, 2, 3 pour dérivé droite gauche centré" << endl;
+cin >> choix ;
 
-    int n = (x_fin - x_debut)/dx + 1;
-    cout << "n = " << n << endl;
+cout << "Saisir les valeurs de 1, 2, pour sinus ou exponentielle" << endl;
+cin >> choixf ;
 
-    Eigen::VectorXf X(n);
-    for (int i = 0; i < n; i++) {
-        X(i) = x_debut + i*dx;
-    }
+cout << "Saisir les valeurs de hmin, hmax, n" << endl;
+cin >> hmin >> hmax >> n ;
 
-    // Affichage des premières valeurs de X
+float r = pow((hmax/hmin), 1./(n-1));
 
-    cout << "X = " << X(0) << " " << X(1) << " " << X(2) << " ... " << X(n-3) << " " << X(n-2) << " " << X(n-1) << endl;
 
-    // Construction du vecteur Y
 
-    Eigen::VectorXf Y(n);
+function < float (function<float(float)>, const float, const float) > derive ;
+function <float (float)> f ;
 
-    // Définitions des paramètres extérieurs à la fonction logistique
-    k = 1.;
-    yzero = 0.5;
-    a = 1.;
-    t0 = 0.;
-    tabule(logistique, X, Y);
+if (choix==1){
+    derive = deriv2tdd;
+    filename = "derivee_droite_e.txt";
+}
+if (choix==2){
+    derive = derriv2tdg;
+    filename = "derivee_gauche_e.txt";
+}
+if (choix==3){
+    derive = deriv2tc;
+    filename = "derivee_centree_e.txt";
+}
 
-    // Création du fichier
+if (choixf==1){
+    f = sinus;
+    f_0 = deriv_sinus(t_0);
 
-    // Ajoutez des vérifications pour les exceptions lors de l'appel à ecrit
+}
+if (choixf==2){
+    f = expo;
+    f_0 = deriv_expo(t_0);
 
-    cout << "Entrer le nom du fichier" << endl;
-    string filename;
-    cin >> filename;
+}
 
-    // si le dossier data n'existe pas, on le crée
-    system("mkdir -p data");
 
-    ecrit("data/" + filename + ".txt", X, Y);
-    cout << "Fichier " << filename << ".txt ecrit" << endl;
+Eigen::VectorXf x(n); // tableau de h 
+Eigen::VectorXf delta(n); // tableau d'erreurs
+	
+	
+	for (int i=0; i<n; i++){
+		x(i) = hmin * pow(r, i) ;
+		delta(i) = abs(f_0 - derive(f, t_0, x(i)));
+	}
 
-    return 0;
+
+//ecriture dans un fichier
+ecrit(filename, x, delta);
+
+//affichage
+	//for (int i =0; i<x.size(); i++){
+	//cout<< x(i) << " " << y(i) << endl;
+	//}
+return 0;
+
 }

@@ -1,17 +1,27 @@
-//
-// Created by Lucas on 25/01/2024.
-//
-
-#include "../include/fcts.h"
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <eigen3/Eigen/Dense>
 #include <cmath>
+using namespace std;
 
-// Paramètres de la fonction logistique
-float t0, yzero, a, k;
+//en-têtes personnels
+#include "fcts.h"
 
-float carre(float x){
-    return x*x;
+float k;
+
+float sinus(float t){
+	return sin(k*t);	
 }
 
-float logistique(float x){
-    return k/(1+(k-yzero)/yzero*exp(-a*(x-t0)));
+float deriv_sinus(float t){
+    return k*cos(k*t);
+}
+
+float expo(float t){
+	return exp(k*t);	
+}
+
+float deriv_expo(float t){
+    return k*exp(k*t);
 }
