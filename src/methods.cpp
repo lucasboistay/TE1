@@ -1,10 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include <eigen3/Eigen/Dense>
+#include <Eigen/Dense>
 
 #include <functional>
-#include "methode.h"
+#include "methods.h"
 
 using namespace std;
 

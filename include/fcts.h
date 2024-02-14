@@ -1,5 +1,5 @@
 #ifndef FCTS_H
-#include <eigen3/Eigen/Dense>
+#include <Eigen/Dense>
 float sinus(float);
 float expo(float);
 float deriv_sinus(float);

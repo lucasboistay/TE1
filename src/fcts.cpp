@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include <eigen3/Eigen/Dense>
+#include <Eigen/Dense>
 #include <cmath>
 using namespace std;
 

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include <eigen3/Eigen/Dense>
+#include <Eigen/Dense>
 #include <cmath>
 #include <string>
 #include <functional>
@@ -9,7 +9,7 @@
 //en-têtes personnels
 
 #include "fcts.h"
-#include "methode.h"
+#include "methods.h"
 #include "util.h"
 
 using namespace std;

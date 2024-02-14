@@ -61,7 +61,7 @@ for i in ["derivee_centree_e.txt", "derivee_droite_e.txt", "derivee_gauche_e.txt
     #plt.xlabel("x")                                   # <== variable d'abscisse
     #plt.ylabel("y")                                   # <== variable d'ordonnee
     
-    ²plt.legend()
+    plt.legend()
     #plt.savefig(nomgraph) # sauvegarde du fichier.
     print(" < Le graphique %s a ete cree."%(nomgraph) )
     print("   \tVisualiser avec :  evince %s"%(nomgraph))
